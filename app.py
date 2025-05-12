@@ -59,7 +59,7 @@ if st.session_state["messages"]:
                 f"""
                 <div style='display: flex; margin-bottom: 16px; align-items: flex-start;'>
                     <img src="https://raw.githubusercontent.com/kirin851204/test01/main/hd_restoration_result_image.png"
-                         style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover; margin-right: 12px;">
+                         style="width: 96px; height: 48px; border-radius: 50%; object-fit: cover; margin-right: 12px;">
                     <div style="
                         background-color: #CDE6C7;
                         color: #000;
