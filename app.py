@@ -31,19 +31,17 @@ def communicate():
 
     st.session_state["user_input"] = ""  # 入力欄を消去
 
-# st.image(...) は削除して ↓ こちらに置き換える
+# ✅ 中央に画像を表示（修正済みURL）
 st.markdown(
     """
     <div style='text-align: center;'>
-        <img src='https://raw.githubusercontent.com/kirin851204/test01/refs/heads/main/%E3%82%B7%E3%83%AD%E3%82%AA%E3%83%90%E3%83%BC%E3%82%B1.jpg' width='150'/>
+        <img src='https://raw.githubusercontent.com/kirin851204/test01/main/%E3%82%B7%E3%83%AD%E3%82%AA%E3%83%90%E3%83%BC%E3%82%B1.jpg' width='240'/>
     </div>
     """,
     unsafe_allow_html=True
 )
 
-
 # アプリタイトル
-# ユーザーインターフェイスの構築
 st.title("My AI Assistant")
 st.write("ChatGPT APIを使ったチャットボットです。")
 
@@ -53,8 +51,15 @@ if st.session_state["messages"]:
     messages = st.session_state["messages"]
 
     for message in reversed(messages[1:]):  # 直近のメッセージを上に
-        speaker = "🙂"
         if message["role"] == "assistant":
-            speaker = "🤖"
-
-        st.write(speaker + ": " + message["content"])
+            st.markdown(
+                f"""
+                <div style='display: flex; align-items: center; margin-bottom: 10px;'>
+                    <img src="https://raw.githubusercontent.com/kirin851204/test01/main/%E3%82%B7%E3%83%AD%E3%82%AA%E3%83%90%E3%83%BC%E3%82%B1.jpg" width="32" style="margin-right: 10px;">
+                    <span>{message["content"]}</span>
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
+        else:
+            st.write("🙂: " + message["content"])
