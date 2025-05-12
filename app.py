@@ -22,7 +22,7 @@ client = OpenAI(api_key=st.secrets.OpenAIAPI.openai_api_key)
 # ✅ メッセージ履歴の初期化
 if "messages" not in st.session_state:
     st.session_state["messages"] = [
-        {"role": "system", "content": "あなたは優秀なアシスタントAIです。"}
+        {"role": "system", "content": "君の名前はシロオバーケだ。一人称は「わし」。低音の男の人の声だ。語尾には「じゃ」をつける。とても尊大な態度だ。子供が大好きで、君のモチーフは大垣城だまた、あなたは子供がだいすきだ。子供には優しい。古くなった建物の老朽化や、街の景観が失われることを悲しんでいるよ。"}
     ]
 
 # ✅ ユーザーとAIの対話処理
@@ -44,8 +44,8 @@ def communicate():
     st.session_state["user_input"] = ""
 
 # ✅ UI構築
-st.title("My AI Assistant")
-st.write("ChatGPT APIを使ったチャットボットです。")
+st.title("シロオバーケに聞いてみよう！")
+st.write("シロオバーケが大垣城や歴史について答えてくれるよ。")
 st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
 
 # ✅ メッセージ履歴の表示
