@@ -31,15 +31,7 @@ def communicate():
 
     st.session_state["user_input"] = ""  # 入力欄を消去
 
-# ✅ 中央にアイコン画像を表示（ヘッダー用）
-st.markdown(
-    """
-    <div style='text-align: center;'>
-        <img src='https://github.com/kirin851204/test01/blob/main/hd_restoration_result_image.png?raw=true' width='240'/>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+
 
 # アプリタイトル
 st.title("My AI Assistant")
@@ -57,7 +49,7 @@ if st.session_state["messages"]:
             st.markdown(
                 f"""
                 <div style='display: flex; align-items: center; margin-bottom: 12px;'>
-                    <img src="https://raw.githubusercontent.com/kirin851204/test01/main/%E3%82%B7%E3%83%AD%E3%82%AA%E3%83%90%E3%83%BC%E3%82%B1.jpg"
+                    <img src="https://github.com/kirin851204/test01/blob/main/hd_restoration_result_image.png?raw=true"
                          style="width: 64px; height: 64px; border-radius: 50%; object-fit: cover; margin-right: 12px;">
                     <div style='font-size: 16px;'>{message["content"]}</div>
                 </div>
