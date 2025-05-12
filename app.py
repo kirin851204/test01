@@ -63,7 +63,7 @@ if st.session_state["messages"]:
                     <div style="font-size: 32px; margin-right: 12px;">🤖</div>
                     <div style="
                         background-color: #CDE6C7;
-                        color: #000;
+                        color: #D3E173;
                         padding: 12px 16px;
                         border-radius: 12px;
                         border-top-left-radius: 0;
