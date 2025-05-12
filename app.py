@@ -53,27 +53,26 @@ if st.session_state["messages"]:
     messages = st.session_state["messages"]
 
     for message in reversed(messages[1:]):
-        if message["role"] == "assistant":
-            # AIの吹き出し：丸い画像＋緑背景
-            st.markdown(
-                f"""
-                <div style='display: flex; margin-bottom: 16px; align-items: flex-start;'>
-                    <img src="https://raw.githubusercontent.com/kirin851204/test01/main/hd_restoration_result_image.png"
-                         style="width: 96px; height: 48px; border-radius: 50%; object-fit: cover; margin-right: 12px;">
-                    <div style="
-                        background-color: #CDE6C7;
-                        color: #000;
-                        padding: 12px 16px;
-                        border-radius: 12px;
-                        border-top-left-radius: 0;
-                        max-width: 75%;
-                        font-size: 16px;">
-                        {message["content"]}
-                    </div>
-                </div>
-                """,
-                unsafe_allow_html=True
-            )
+      st.markdown(
+    f"""
+    <div style='display: flex; margin-bottom: 16px; align-items: flex-start;'>
+        <img src="https://raw.githubusercontent.com/kirin851204/test01/main/hd_restoration_result_image.png"
+             style="width: 96px; height: 96px; border-radius: 50%; object-fit: cover; margin-right: 12px;">
+        <div style="
+            background-color: #CDE6C7;
+            color: #000;
+            padding: 12px 16px;
+            border-radius: 12px;
+            border-top-left-radius: 0;
+            max-width: 75%;
+            font-size: 16px;">
+            {message["content"]}
+        </div>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
         else:
             # ユーザーの吹き出し：右寄せ＋白背景
             st.markdown(
