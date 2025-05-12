@@ -32,7 +32,7 @@ def communicate():
     st.session_state["user_input"] = ""  # 入力欄を消去
 
 # ✅ ← ここにアイコン表示を追加
-st.image("https://example.com/icon.png", width=80)
+st.image("https://raw.githubusercontent.com/kirin851204/test01/refs/heads/main/%E3%82%B7%E3%83%AD%E3%82%AA%E3%83%90%E3%83%BC%E3%82%B1.jpg", width=80)
 
 # アプリタイトル
 # ユーザーインターフェイスの構築
