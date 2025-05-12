@@ -35,7 +35,7 @@ def communicate():
 st.markdown(
     """
     <div style='text-align: center;'>
-        <img src='https://raw.githubusercontent.com/kirin851204/test01/main/%E3%82%B7%E3%83%AD%E3%82%AA%E3%83%BC%E3%82%B1.jpg' width='150'/>
+        <img src='https://raw.githubusercontent.com/kirin851204/test01/refs/heads/main/%E3%82%B7%E3%83%AD%E3%82%AA%E3%83%90%E3%83%BC%E3%82%B1.jpg' width='150'/>
     </div>
     """,
     unsafe_allow_html=True
