@@ -46,7 +46,7 @@ def communicate():
 # ✅ UI構築
 st.title("シロオバーケに聞いてみよう！")
 st.write("シロオバーケが大垣城や歴史について答えてくれるよ。")
-st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
+st.text_input("シロオバーケに聞いてみよう。", key="user_input", on_change=communicate)
 
 # ✅ メッセージ履歴の表示
 if st.session_state["messages"]:
