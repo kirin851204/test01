@@ -1,6 +1,25 @@
 import streamlit as st
 from openai import OpenAI  # 新しいクラスベースのAPI
 
+import streamlit as st
+from openai import OpenAI
+
+# ✅ ページ全体の背景色を設定
+st.markdown(
+    """
+    <style>
+        body {
+            background-color: #CDE6C7;
+        }
+        .stApp {
+            background-color: #CDE6C7;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+
 # Streamlit Community Cloudの「Secrets」からOpenAI API keyを取得
 client = OpenAI(api_key=st.secrets.OpenAIAPI.openai_api_key)
 
