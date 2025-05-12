@@ -31,7 +31,10 @@ def communicate():
 
     st.session_state["user_input"] = ""  # 入力欄を消去
 
+# ✅ ← ここにアイコン表示を追加
+st.image("https://example.com/icon.png", width=80)
 
+# アプリタイトル
 # ユーザーインターフェイスの構築
 st.title("My AI Assistant")
 st.write("ChatGPT APIを使ったチャットボットです。")
