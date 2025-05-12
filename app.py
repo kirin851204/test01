@@ -1,9 +1,6 @@
 import streamlit as st
 from openai import OpenAI  # 新しいクラスベースのAPI
 
-import streamlit as st
-from openai import OpenAI
-
 # ✅ ページ全体の背景色を設定
 st.markdown(
     """
@@ -19,24 +16,21 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-
-# Streamlit Community Cloudの「Secrets」からOpenAI API keyを取得
+# ✅ OpenAI APIクライアントの初期化
 client = OpenAI(api_key=st.secrets.OpenAIAPI.openai_api_key)
 
-# st.session_stateを使いメッセージのやりとりを保存
+# ✅ st.session_stateにメッセージ履歴がなければ初期化
 if "messages" not in st.session_state:
     st.session_state["messages"] = [
         {"role": "system", "content": "あなたは優秀なアシスタントAIです。"}
     ]
 
-# チャットボットとやりとりする関数
+# ✅ チャット処理関数
 def communicate():
     messages = st.session_state["messages"]
-
     user_message = {"role": "user", "content": st.session_state["user_input"]}
     messages.append(user_message)
 
-    # 新しいAPI形式
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=messages
@@ -47,33 +41,56 @@ def communicate():
         "content": response.choices[0].message.content
     }
     messages.append(bot_message)
+    st.session_state["user_input"] = ""  # 入力欄をクリア
 
-    st.session_state["user_input"] = ""  # 入力欄を消去
-
-
-
-# アプリタイトル
+# ✅ UI
 st.title("My AI Assistant")
 st.write("ChatGPT APIを使ったチャットボットです。")
 
-# 入力欄
-user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
+# 入力欄（変更時に communicate() を実行）
+st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
 
-# メッセージ表示
+# ✅ メッセージ表示
 if st.session_state["messages"]:
     messages = st.session_state["messages"]
 
-    for message in reversed(messages[1:]):  # 直近のメッセージを上に
+    for message in reversed(messages[1:]):  # 最初のsystemメッセージは表示しない
         if message["role"] == "assistant":
+            # 🤖 + 緑の吹き出し（左側）
             st.markdown(
                 f"""
-                <div style='display: flex; align-items: center; margin-bottom: 12px;'>
-                    <img src="https://github.com/kirin851204/test01/blob/main/hd_restoration_result_image.png?raw=true"
-                         style="width: 64px; height: 64px; border-radius: 50%; object-fit: cover; margin-right: 12px;">
-                    <div style='font-size: 16px;'>{message["content"]}</div>
+                <div style='display: flex; margin-bottom: 16px; align-items: flex-start;'>
+                    <div style="font-size: 32px; margin-right: 12px;">🤖</div>
+                    <div style="
+                        background-color: #CDE6C7;
+                        color: #000;
+                        padding: 12px 16px;
+                        border-radius: 12px;
+                        border-top-left-radius: 0;
+                        max-width: 75%;
+                        font-size: 16px;">
+                        {message["content"]}
+                    </div>
                 </div>
                 """,
                 unsafe_allow_html=True
             )
         else:
-            st.write("🙂: " + message["content"])
+            # 🙂 + 白の吹き出し（右側）
+            st.markdown(
+                f"""
+                <div style='display: flex; justify-content: flex-end; margin-bottom: 16px;'>
+                    <div style="
+                        background-color: #fff;
+                        color: #000;
+                        padding: 12px 16px;
+                        border-radius: 12px;
+                        border-top-right-radius: 0;
+                        max-width: 75%;
+                        font-size: 16px;">
+                        {message["content"]}
+                    </div>
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
