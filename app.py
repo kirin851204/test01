@@ -5,7 +5,7 @@ from openai import OpenAI
 st.markdown(
     """
     <style>
-        .stApp {
+        html, body, .stApp {
             background-color: #254B4A !important;
         }
         .input-container {
@@ -23,7 +23,6 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
 # ✅ OpenAI APIキー取得
 client = OpenAI(api_key=st.secrets.OpenAIAPI.openai_api_key)
 
