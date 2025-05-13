@@ -1,15 +1,15 @@
 import streamlit as st
 from openai import OpenAI
 
-# ✅ 背景色のスタイル適用
+# ✅ カスタムCSS：背景色を画像に合わせて変更
 st.markdown(
     """
     <style>
         body {
-            background-color: #2A6E6B;
+            background-color: #254B4A;
         }
         .stApp {
-            background-color: #2A6E6B;
+            background-color: #254B4A;
         }
         .input-container {
             position: fixed;
@@ -18,7 +18,7 @@ st.markdown(
             transform: translateX(-50%);
             width: 80%;
             z-index: 9999;
-            background-color: #2A6E6B;
+            background-color: #254B4A;
             padding: 10px;
             border-radius: 12px;
         }
@@ -27,7 +27,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# ✅ OpenAI APIキーを取得
+# ✅ OpenAI APIキーの取得
 client = OpenAI(api_key=st.secrets.OpenAIAPI.openai_api_key)
 
 # ✅ メッセージ履歴の初期化
@@ -36,7 +36,7 @@ if "messages" not in st.session_state:
         {"role": "system", "content": "君の名前はシロオバーケだ。一人称は「わし」。低音の男の人の声だ。語尾には「じゃ」をつける。とても親切。君のモチーフは大垣城だ。また、あなたは子供がだいすきだ。子供には優しい相手のことは「君」と呼ぶ。古くなった建物の老朽化や、街の景観が失われることを悲しんでいるよ。"}
     ]
 
-# ✅ チャット処理
+# ✅ チャット処理関数
 def communicate():
     messages = st.session_state["messages"]
     user_message = {"role": "user", "content": st.session_state["user_input"]}
@@ -54,13 +54,15 @@ def communicate():
     messages.append(bot_message)
     st.session_state["user_input"] = ""
 
-# ✅ タイトルと説明
-st.title("シロオバーケに聞いてみよう！")
-st.write("シロオバーケが大垣城や歴史について答えてくれるよ。")
+# ✅ 画像をタイトル代わりに表示
+st.image(
+    "https://github.com/kirin851204/test01/blob/main/%E8%A1%A8%E7%B4%99.jpg?raw=true",
+    use_column_width=True
+)
 
-# ✅ メッセージ履歴の表示（上から下に）
+# ✅ メッセージ履歴を上から順に表示
 if st.session_state["messages"]:
-    for message in st.session_state["messages"][1:]:  # reversedしない
+    for message in st.session_state["messages"][1:]:
         if message["role"] == "assistant":
             st.markdown(
                 f"""
@@ -100,7 +102,7 @@ if st.session_state["messages"]:
                 unsafe_allow_html=True
             )
 
-# ✅ 入力欄（画面下部中央に固定）
+# ✅ 入力フォームを下部中央に固定
 st.markdown('<div class="input-container">', unsafe_allow_html=True)
 st.text_input("シロオバーケに聞いてみよう。", key="user_input", on_change=communicate, label_visibility="collapsed")
 st.markdown('</div>', unsafe_allow_html=True)
