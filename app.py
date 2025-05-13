@@ -15,7 +15,7 @@ st.markdown(
             transform: translateX(-50%);
             width: 80%;
             z-index: 9999;
-            background-color: #254B4A;
+            background-color: #9FB4FF;
             padding: 10px;
             border-radius: 12px;
         }
