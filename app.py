@@ -6,7 +6,7 @@ st.markdown(
     """
     <style>
         html, body, .stApp {
-            background-color: #A6A8FF !important;
+            background-color: #9EB4FD !important;
         }
         .input-container {
             position: fixed;
